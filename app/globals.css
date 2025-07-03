@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=GFS+Didot&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+
+@theme {
+  --font-heading: "'GFS Didot'", serif;
+  --font-body: "Roboto", sans-serif;
+}
+
+html {
+  background: radial-gradient(circle at center, #0f0f0f, #000);
+  color-scheme: dark;
+}
+
+body{
+  background-color: black;
+}
+
+@media screen and (max-width: 768px) {
+  /* .fullNav {
+    display: none;
+  } */
+}
