@@ -27,6 +27,12 @@ export default function RootLayout({
         </nav> */}
         <Navbar />
         {children}
+        <svg width="0" height="0" className="absolute">
+          <filter id="glass-distortion">
+            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence" />
+            <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="8" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </svg>
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import TechOrbit from './components/techorbit';
+// import TechOrbit from './components/techorbit';
+import { AuroraBackground } from './components/ui/aurora-background';
 import "./globals.css";
 
 
@@ -8,7 +9,7 @@ export default function Home() {
   return (
     <main className='bg-black'>
       {/* banner section */}
-      <section className="relative mb-20">
+      <section className="relative md:mb-20">
         <div className='w-[85%] mx-auto absolute top-10 left-8 flex flex-col items-start justify-center z-49 md:w-[70%] md:left-[6%] md:top-[8%]'>
           <h1 className='text-7xl font-heading text-white pt-20 md:text-[100px]'>Ansh <br />Barman</h1>
           <p className='text-xl font-heading text-gray-300 opacity-70 text-center mt-4 md:text-3xl'>Frontend Designer and Developer</p>
@@ -22,17 +23,20 @@ export default function Home() {
           <p className='text-white text-sm hover:underline my-4'>Scroll down to know more<i className='fa-solid fa-arrow-right-long rotate-90 text-xs ml-2'></i></p>
         </div>
         {/* brands */}
-        <div className='hidden w-[85%] absolute bottom-16 left-[7%] mx-auto items-center justify-center gap-10 z-49 md:flex'>
-          <Image className='w-100% h-full z-40' width={150} height={50} src="/expLogo/th.png" alt="bg" />
-          <Image className='w-100% h-full z-40' width={150} height={50} src="/expLogo/gdsc.png" alt="bg" />
-          <Image className='w-100% h-full z-40' width={150} height={50} src="/expLogo/expert.png" alt="bg" />
+        <div className=' md:w-[85%] absolute md:bottom-16 md:left-[7%] md:mx-auto items-center md:justify-center md:gap-10 z-49 flex bottom-44 left-0 w-full justify-around'>
+          <Image className='w-[100px] h-full z-40 md:w-[150px]' width={0} height={0} sizes="(min-width: 768px) 150px, 50px" src="/expLogo/th.png" alt="bg" />
+          <Image className='w-[100px] h-full z-40 md:w-[150px]' width={0} height={0} sizes="(min-width: 768px) 150px, 50px" src="/expLogo/gdsc.png" alt="bg" />
+          <Image className='w-[100px] h-full z-40 md:w-[150px]' width={0} height={0} sizes="(min-width: 768px) 150px, 50px" src="/expLogo/expert.png" alt="bg" />
         </div>
-        <div className='relative h-dvh w-full overflow-hidden'>
-          <TechOrbit />
-          <div className='absolute bottom-0 w-full h-6 bg-linear-to-b from-[#ffffff00] to-black z-48'></div>
-          <Image className='absolute bottom-0 w-full z-47 opacity-35 md:hidden' width={200} height={200} src="/bg_grid.png" alt="bg" />
-          <div className='absolute top-0 w-full h-full bg-linear-to-b from-[#ffffff00] to-black z-46'></div>
-          <Image className='w-full h-full z-30' fill={true} src="/portfolio bg.jpg" alt="bg" />
+        <div className='relative h-screen w-full overflow-hidden'>
+          <div className='absolute top-0 w-full h-full bg-linear-to-b from-[#ffffff00] via-[#ffffff00] to-black z-46'></div>
+          <AuroraBackground>
+            <></>
+           </AuroraBackground>
+          {/* <div className='absolute bottom-0 w-full h-6 bg-linear-to-b from-[#ffffff00] to-black z-48'></div> */}
+          {/* <TechOrbit /> */}
+          {/* <Image className='absolute bottom-0 w-full z-47 opacity-35 md:hidden' width={200} height={200} src="/bg_grid.png" alt="bg" /> */}
+          {/* <Image className='w-full h-full z-30' fill={true} src="/portfolio bg.jpg" alt="bg" /> */}
         </div>
       </section>
       {/* approach section */}
@@ -40,8 +44,8 @@ export default function Home() {
         <h1 className='text-2xl font-heading text-white text-center mx-auto w-9/12 md:text-3xl'>From modern minimalism to timeless classics</h1>
         <p className='text-center mx-auto w-9/12 text-xs mt-4 md:text-[16px] md:font-light'>My all encompassing approach and checklist that builds impactful brand outcomes.</p>
         {/* approach cards */}
-        <div className='w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10'>
-          <div className='bg-white p-6 text-[#464646] relative h-96 md:h-[500px] md:p-8' id="light-zone">
+        <div className='w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 light-zone'>
+          <div className='bg-white p-6 text-[#464646] relative h-96 md:h-[500px] md:p-8'>
             <h2 className='text-7xl font-heading mb-4 absolute top-0 left-2 opacity-10 md:text-[100px] md:top-2 md:left-4'>01</h2>
             <h2 className='text-2xl font-heading mb-4 mt-6 md:text-3xl md:mt-18'>Understand the Problem</h2>
             <p className='text-sm md:text-[16px] md:font-normal'>I start by researching user needs, business goals, and product context. Through interviews, data analysis, and journey mapping, I make sure the design is grounded in real-world insight.</p>
@@ -52,7 +56,7 @@ export default function Home() {
               <Image className='w-[60%] z-47 absolute bottom-0 right-0 md:w-[70%]' width={200} height={200} src="/notion ui.png" alt="ui1"></Image>
             </div>
           </div>
-          <div className='bg-white p-6 text-[#464646] relative h-96 md:h-[500px] md:p-8' id="light-zone">
+          <div className='bg-white p-6 text-[#464646] relative h-96 md:h-[500px] md:p-8'>
             <h2 className='text-7xl font-heading mb-4 absolute top-0 left-2 opacity-10 md:text-[100px] md:top-2 md:left-4'>02</h2>
             <h2 className='text-2xl font-heading mb-4 mt-6 md:text-3xl md:mt-18'>Design the Experience</h2>
             <p className='text-sm md:text-[16px] md:font-normal'>From wireframes to high-fidelity mockups, I craft user interfaces that prioritize clarity, accessibility, and consistency. Every design decision supports usability and scalable development.</p>
@@ -63,7 +67,7 @@ export default function Home() {
               <Image className='w-[60%] z-47 absolute bottom-0 right-0 md:w-[70%]' width={200} height={200} src="/figma ui.png" alt="ui2"></Image>
             </div>
           </div>
-          <div className='bg-white p-6 text-[#464646] relative h-96 md:h-[500px] md:p-8' id="light-zone">
+          <div className='bg-white p-6 text-[#464646] relative h-96 md:h-[500px] md:p-8'>
             <h2 className='text-7xl font-heading mb-4 absolute top-0 left-2 opacity-10 md:text-[100px] md:top-2 md:left-4'>03</h2>
             <h2 className='text-2xl font-heading mb-4 mt-6 md:text-3xl md:mt-18'>Build & Refine</h2>
             <p className='text-sm md:text-[16px] md:font-normal'>I bring designs to life with clean, responsive code using HTML, CSS/Tailwind, JavaScript, and React. I test across devices, validate accessibility, and iterate post-launch based on feedback.</p>

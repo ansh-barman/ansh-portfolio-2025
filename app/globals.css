@@ -8,6 +8,28 @@
   --font-body: "Roboto", sans-serif;
 }
 
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+}
+
+ /* {
+  background: #0e0e0e; or any matching dark tone
+  margin: 0;
+  padding: 0;
+} */
+
 html {
   background: radial-gradient(circle at center, #0f0f0f, #000);
   color-scheme: dark;

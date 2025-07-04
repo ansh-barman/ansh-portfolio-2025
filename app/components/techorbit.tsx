@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
@@ -35,8 +36,16 @@ const testimonials = [
 ];
 
 export default function TechOrbit() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
+
   return (
-    <div className="w-[90%] absolute bottom-4 z-49 mx-5 md:hidden">
+    <div className="w-[90%] absolute bottom-10 z-49 mx-5 md:hidden">
       <Swiper
         modules={[Pagination, Autoplay, EffectFade]}
         slidesPerView={1}
@@ -44,7 +53,6 @@ export default function TechOrbit() {
         effect="fade"
         fadeEffect={{ crossFade: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
-        // pagination={{ clickable: true }}
         className="w-full"
       >
         {testimonials.map((testimonial, index) => (
