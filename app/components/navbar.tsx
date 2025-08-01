@@ -1,43 +1,43 @@
 'use client';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Navbar() {
-  const [isOnAnyLightZone, setIsOnAnyLightZone] = useState(false);
+  // const [isOnAnyLightZone, setIsOnAnyLightZone] = useState(false);
 
-useEffect(() => {
-  const checkOverlap = () => {
-    const navbar = document.getElementById('navbar');
-    const lightZones = document.querySelectorAll('.light-zone');
+// useEffect(() => {
+//   const checkOverlap = () => {
+//     const navbar = document.getElementById('navbar');
+//     const lightZones = document.querySelectorAll('.light-zone');
 
-    if (!navbar || lightZones.length === 0) return;
+//     if (!navbar || lightZones.length === 0) return;
 
-    const navRect = navbar.getBoundingClientRect();
-    let isOverlapping = false;
+//     const navRect = navbar.getBoundingClientRect();
+//     let isOverlapping = false;
 
-    lightZones.forEach((zone) => {
-      const zoneRect = zone.getBoundingClientRect();
+//     lightZones.forEach((zone) => {
+//       const zoneRect = zone.getBoundingClientRect();
 
-      const overlap =
-        navRect.top < zoneRect.bottom &&
-        navRect.bottom > zoneRect.top;
+//       const overlap =
+//         navRect.top < zoneRect.bottom &&
+//         navRect.bottom > zoneRect.top;
 
-      if (overlap) isOverlapping = true;
-    });
+//       if (overlap) isOverlapping = true;
+//     });
 
-    setIsOnAnyLightZone(isOverlapping);
-  };
+//     setIsOnAnyLightZone(isOverlapping);
+//   };
 
-  window.addEventListener('scroll', checkOverlap);
-  window.addEventListener('resize', checkOverlap);
-  checkOverlap(); // run once on mount
+//   window.addEventListener('scroll', checkOverlap);
+//   window.addEventListener('resize', checkOverlap);
+//   checkOverlap();
 
-  return () => {
-    window.removeEventListener('scroll', checkOverlap);
-    window.removeEventListener('resize', checkOverlap);
-  };
-}, []);
+//   return () => {
+//     window.removeEventListener('scroll', checkOverlap);
+//     window.removeEventListener('resize', checkOverlap);
+//   };
+// }, []);
 
   return (
     <nav id="navbar"
@@ -54,7 +54,7 @@ useEffect(() => {
       {/* Foreground Content */}
       <div className="relative z-10 flex items-center justify-between w-full">
         <Image
-          className={`${isOnAnyLightZone ? 'invert' : 'invert-0'}`}
+          // className={`${isOnAnyLightZone ? 'invert' : 'invert-0'}`}
           width={30}
           height={30}
           src="/portfolio logo.png"
@@ -62,16 +62,20 @@ useEffect(() => {
         />
         <ul className="flex items-center justify-between w-[80%] text-sm font-light">
           <li className="hover:opacity-70 cursor-pointer">
-            <Link className={`font-normal  ${isOnAnyLightZone ? 'text-[#464646]' : 'text-white'}`} href="/">Home</Link>
+            {/* <Link className={`font-normal  ${isOnAnyLightZone ? 'text-[#464646]' : 'text-white'}`} href="/">Home</Link> */}
+            <Link className={`font-normal  text-white`} href="/">Home</Link>
           </li>
           <li className="hover:opacity-70 cursor-pointer">
-            <Link className={`font-normal  ${isOnAnyLightZone ? 'text-[#464646]' : 'text-white'}`} href="/projects">Projects</Link>
+            {/* <Link className={`font-normal  ${isOnAnyLightZone ? 'text-[#464646]' : 'text-white'}`} href="/projects">Projects</Link> */}
+            <Link className={`font-normal  text-white`} href="/projects">Projects</Link>
           </li>
           <li className="hover:opacity-70 cursor-pointer">
-            <Link className={`font-normal  ${isOnAnyLightZone ? 'text-[#464646]' : 'text-white'}`} href="/">Skills</Link>
+            {/* <Link className={`font-normal  ${isOnAnyLightZone ? 'text-[#464646]' : 'text-white'}`} href="/">Skills</Link> */}
+            <Link className={`font-normal  text-white`} href="/">Skills</Link>
           </li>
           <li className="hover:opacity-70 cursor-pointer">
-            <Link className={`font-normal  ${isOnAnyLightZone ? 'text-[#464646]' : 'text-white'}`} href="/">Contact</Link>
+            {/* <Link className={`font-normal  ${isOnAnyLightZone ? 'text-[#464646]' : 'text-white'}`} href="/">Contact</Link> */}
+            <Link className={`font-normal  text-white`} href="/">Contact</Link>
           </li>
         </ul>
       </div>
