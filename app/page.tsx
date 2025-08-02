@@ -11,7 +11,7 @@ export default function Home() {
       {/* banner section */}
       <section className="relative md:mb-20">
         <div className='w-[85%] mx-auto absolute top-10 left-8 flex flex-col items-start justify-center z-49 md:w-[70%] md:left-[6%] md:top-[8%]'>
-          <h1 className='text-7xl font-heading text-white pt-20 md:text-[100px]'>Ansh <br />Barman</h1>
+          <Link href='/about' className='text-7xl font-heading text-white pt-20 md:text-[100px]'>Ansh <br />Barman</Link>
           <p className='text-xl font-heading text-gray-300 opacity-70 text-center mt-4 md:text-3xl'>Frontend Designer and Developer</p>
           <div className='my-4 flex items-center justify-center'>
             <Link href="/"><i className="hover:text-[#2c9ab7] fa-brands fa-dribbble text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
