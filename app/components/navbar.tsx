@@ -4,40 +4,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Navbar() {
-  // const [isOnAnyLightZone, setIsOnAnyLightZone] = useState(false);
 
-// useEffect(() => {
-//   const checkOverlap = () => {
-//     const navbar = document.getElementById('navbar');
-//     const lightZones = document.querySelectorAll('.light-zone');
-
-//     if (!navbar || lightZones.length === 0) return;
-
-//     const navRect = navbar.getBoundingClientRect();
-//     let isOverlapping = false;
-
-//     lightZones.forEach((zone) => {
-//       const zoneRect = zone.getBoundingClientRect();
-
-//       const overlap =
-//         navRect.top < zoneRect.bottom &&
-//         navRect.bottom > zoneRect.top;
-
-//       if (overlap) isOverlapping = true;
-//     });
-
-//     setIsOnAnyLightZone(isOverlapping);
-//   };
-
-//   window.addEventListener('scroll', checkOverlap);
-//   window.addEventListener('resize', checkOverlap);
-//   checkOverlap();
-
-//   return () => {
-//     window.removeEventListener('scroll', checkOverlap);
-//     window.removeEventListener('resize', checkOverlap);
-//   };
-// }, []);
+  const scrollToSection = (id: string, offset: number = 120) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav id="navbar"
@@ -71,7 +45,7 @@ export default function Navbar() {
           </li>
           <li className="hover:opacity-70 cursor-pointer">
             {/* <Link className={`font-normal  ${isOnAnyLightZone ? 'text-[#464646]' : 'text-white'}`} href="/">Skills</Link> */}
-            <Link className={`font-normal  text-white`} href="/">Skills</Link>
+            <Link className={`font-normal  text-white`} href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('skills', 120);}}>Skills</Link>
           </li>
           <li className="hover:opacity-70 cursor-pointer">
             {/* <Link className={`font-normal  ${isOnAnyLightZone ? 'text-[#464646]' : 'text-white'}`} href="/">Contact</Link> */}

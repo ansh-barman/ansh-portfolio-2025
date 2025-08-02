@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 // import Link from "next/link";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,6 +34,7 @@ export default function RootLayout({
             <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="8" xChannelSelector="R" yChannelSelector="G" />
           </filter>
         </svg>
+        <Footer />
       </body>
     </html>
   );

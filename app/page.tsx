@@ -81,7 +81,7 @@ export default function Home() {
         </div>
       </section>
       {/* skills section */}
-      <section className='mb-20'>
+      <section className='mb-20' id='skills'>
         <h1 className='text-2xl font-heading text-white text-center mx-auto w-9/12 md:text-3xl'>Skills</h1>
         <p className='text-center mx-auto w-9/12 text-xs mt-4 md:text-[16px] md:font-light'>My all encompassing approach and checklist that builds impactful brand outcomes.</p>
         {/* skill pills */}
@@ -144,6 +144,10 @@ export default function Home() {
             <div className='flex items-center justify-between gap-2 bg-[#0b0b0b] text-white py-2 px-4 text-xs md:text-[14px] md:py-4 md:px-6'>
               <Image width={20} height={20} src="/icons/framer.png" alt=''></Image>
               Framer
+            </div>
+            <div className='flex items-center justify-between gap-2 bg-[#0b0b0b] text-white py-2 px-4 text-xs md:text-[14px] md:py-4 md:px-6'>
+              <Image width={20} height={20} src="/icons/wireframing.png" alt=''></Image>
+              Wireframing
             </div>
           </div>
         </div>
