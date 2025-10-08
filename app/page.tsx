@@ -166,33 +166,39 @@ export default function Home() {
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>TailwindCSS</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>ReactJS</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>Figma</div>
-              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>+</div>
+              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>+ See All</div>
             </div>
-            <p className='text-sm'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p className='text-sm'>
+              TorqHeads is a full-stack platform built to bring automotive enthusiasts together through forums, blogs, and a marketplace in one seamless hub. Designed with React, Firebase, Bootstrap, and Figma, it emphasizes clean navigation, scalability, and real-time community engagement. I conducted feature testing with users and integrated analytics dashboards to optimize retention, turning an idea into a functional, data-driven product.
+            </p>
           </div>
           <div className='bg-[#0b0b0b] p-6'>
-            <h2 className='font-heading text-2xl'>TorqHeads</h2>
+            <h2 className='font-heading text-2xl'>ExpertLancing Website</h2>
             <div className='flex items-center justify-start gap-2 mt-2 mb-4 flex-wrap'>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>ReactJS</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>HTML</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>CSS</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>TailwindCSS</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>Figma</div>
-              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>+</div>
+              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>+ See All</div>
             </div>
-            <p className='text-sm'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p className='text-sm'>
+              ExpertLancing Website is a corporate platform built to showcase the firm’s expertise with a modern, responsive design and SEO-optimized architecture. Developed end-to-end using ReactJS, Tailwind, and Figma, it emphasizes scalability, accessibility, and consistent branding. By implementing a reusable design system, I reduced new page development time by 35% and boosted client inquiries by 25%, directly driving business growth.
+            </p>
           </div>
           <div className='bg-[#0b0b0b] p-6'>
-            <h2 className='font-heading text-2xl'>TorqHeads</h2>
+            <h2 className='font-heading text-2xl'>Chemora</h2>
             <div className='flex items-center justify-start gap-2 mt-2 mb-4 flex-wrap'>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>ReactJS</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>HTML</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>CSS</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>TailwindCSS</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>Figma</div>
-              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>+</div>
+              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>+ See All</div>
             </div>
-            <p className='text-sm'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p className='text-sm'>
+              Chemora is an R&D platform designed to help organizations navigate the challenge of identifying safer alternatives to harmful or banned chemicals under global regulations. Built with HTML, CSS, JavaScript, Python (Django), MongoDB, and Figma, it delivers an intuitive interface for research and comparison. I engineered compliance metrics, benchmark scores, and interactive graphs, empowering clients to evaluate trade-offs with clarity and make informed, regulation-aligned decisions.
+            </p>
           </div>
           <Link href="/projects" className='text-sm inline-flex items-center gap-2'>View All <i className='fa-solid fa-arrow-right-long text-xs'></i></Link>
         </div>
