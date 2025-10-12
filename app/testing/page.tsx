@@ -9,22 +9,22 @@ const prints = [
   {
     id: 1,
     text: "THIS IS A PRINT COLLECTION",
-    title: "PRINT 1",
-    leftImg: "/images/proto1.1.b.png",
+    title: "TorqHeads",
+    leftImg: "/images/proto1.1.0.png",
     rightImg: "/images/proto1.1.a.png",
   },
   {
     id: 2,
     text: "INSPIRED BY CLASSIC PATTERNS",
-    title: "PRINT 2",
-    leftImg: "/images/proto2.1.a.png",
+    title: "ExpertLancing Website",
+    leftImg: "/images/proto2.1.0.png",
     rightImg: "/images/proto2.1.1.png",
   },
   {
     id: 3,
     text: "A NEW PERSPECTIVE ON TEXTILES",
-    title: "PRINT 3",
-    leftImg: "/images/proto3.1.a.png",
+    title: "Chemora",
+    leftImg: "/images/proto3.1.0.png",
     rightImg: "/images/thuse.gif",
   },
 ];
@@ -93,7 +93,7 @@ function Section({
             key={data.leftImg}
             src={data.leftImg}
             alt="print-left"
-            className="absolute left-[-10%] top-1/2 w-1/3 -translate-y-1/2 rounded-xl"
+            className="absolute left-0 top-1/2 w-[30%] -translate-y-1/2 rounded-xl"
             initial={{ x: "-120%", rotate: -30, opacity: 0 }}
             animate={{ x: "0%", rotate: 0, opacity: 1 }}
             exit={{ x: "-120%", rotate: -30, opacity: 0 }}
