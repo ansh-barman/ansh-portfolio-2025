@@ -8,7 +8,7 @@ import { AuroraBackground } from '../components/ui/aurora-background';
 const prints = [
   {
     id: 1,
-    text: "THIS IS A PRINT COLLECTION",
+    text: "THE AUTOMOTIVE INITIATIVE",
     title: "TorqHeads",
     leftImg: "/images/proto1.1.0.png",
     rightImg: "/images/proto1.1.a.png",
@@ -22,8 +22,22 @@ const prints = [
   },
   {
     id: 3,
-    text: "A NEW PERSPECTIVE ON TEXTILES",
+    text: "SMARTER INSIGHTS FOR SAFER CHEMISTRY",
     title: "Chemora",
+    leftImg: "/images/proto3.1.0.png",
+    rightImg: "/images/thuse.gif",
+  },
+  {
+    id: 4,
+    text: "PROJECT WORKFLOW, SIMPLIFIED",
+    title: "ExpertShare",
+    leftImg: "/images/proto4.1.0.png",
+    rightImg: "/images/thuse.gif",
+  },
+  {
+    id: 5,
+    text: "A NEW PERSPECTIVE ON TEXTILES",
+    title: "StanVid",
     leftImg: "/images/proto3.1.0.png",
     rightImg: "/images/thuse.gif",
   },
@@ -131,8 +145,8 @@ function Section({
             >
               <p className="text-sm tracking-widest mb-4">{data.text}</p>
               <h2 className="text-5xl font-bold mb-6">{data.title}</h2>
-              <button className="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-black transition">
-                Explore Collection
+              <button className="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-black transition cursor-pointer">
+                Explore Project
               </button>
             </motion.div>
           )}
