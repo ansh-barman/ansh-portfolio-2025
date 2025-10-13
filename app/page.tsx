@@ -14,12 +14,12 @@ export default function Home() {
           <h1 className='text-7xl font-heading text-white pt-20 md:text-[100px]'>Ansh <br />Barman</h1>
           <p className='text-xl font-heading text-gray-300 opacity-70 text-center mt-4 md:text-3xl'>Frontend Designer and Developer</p>
           <div className='my-4 flex items-center justify-center'>
-            <Link href="/"><i className="hover:text-[#2c9ab7] fa-brands fa-dribbble text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
-            <Link href="/"><i className="hover:text-[#2c9ab7] fa-brands fa-behance text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
-            <Link href="/"><i className="hover:text-[#2c9ab7] fa-brands fa-github text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
-            <Link href="/"><i className="hover:text-[#2c9ab7] fa-brands fa-linkedin text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
+            <Link target='_blank' href="https://dribbble.com/AnshBarman"><i className="hover:text-[#2c9ab7] fa-brands fa-dribbble text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
+            <Link target='_blank' href="https://www.behance.net/anshbarman"><i className="hover:text-[#2c9ab7] fa-brands fa-behance text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
+            <Link target='_blank' href="https://github.com/ansh-barman"><i className="hover:text-[#2c9ab7] fa-brands fa-github text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
+            <Link target='_blank' href="https://www.linkedin.com/in/ansh-barman-6159201ba/"><i className="hover:text-[#2c9ab7] fa-brands fa-linkedin text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
           </div>
-          <p className='text-white font-light text-sm md:text-xl'>I am a frontend developer and UI/UX designer crafting fast, clean, and responsive interfaces. From concept to deployment, I blend design thinking with modern tools like React, Next.js, Tailwind, and Figma to create seamless user experiences across web platforms — always focused on clarity, performance, and visual precision.</p>
+          <p className='text-white font-light text-sm font-body md:text-xl'>I am a frontend developer and UI/UX designer crafting fast, clean, and responsive interfaces. From concept to deployment, I blend design thinking with modern tools like React, Next.js, Tailwind, and Figma to create seamless user experiences across web platforms — always focused on clarity, performance, and visual precision.</p>
           <p className='text-white text-sm hover:underline my-4'>Scroll down to know more<i className='fa-solid fa-arrow-right-long rotate-90 text-xs ml-2'></i></p>
         </div>
         {/* brands */}

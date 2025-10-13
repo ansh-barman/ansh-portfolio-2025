@@ -17,7 +17,7 @@ export default function Footer() {
           </div>
           <div className='flex items-center justify-start gap-4 mt-4 text-white'>
             <i className="fa-solid fa-phone text-[#2c9ab7] text-sm"></i>
-            <p className='text-xs'>(+91) 935 463 0165</p>
+            <Link className='text-xs' href='telto:9354630165'>(+91) 935 463 0165</Link>
           </div>
           <div className='flex items-center justify-start gap-4 mt-4 text-white'>
             <i className="fa-brands fa-linkedin text-[#2c9ab7] text-sm"></i>
