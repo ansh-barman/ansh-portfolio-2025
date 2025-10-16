@@ -11,6 +11,7 @@ const prints = [
   {
     id: 1,
     text: "THE AUTOMOTIVE INITIATIVE",
+    subtext: "Redesigning the car buying experience for a leading automotive startup.",
     title: "TorqHeads",
     leftImg: "/images/proto1.1.0.png",
     rightImg: "/images/proto1.1.a.png",
@@ -46,6 +47,7 @@ const prints = [
   {
     id: 2,
     text: "INSPIRED BY CLASSIC PATTERNS",
+    subtext: "Redesigning the car buying experience for a leading automotive startup.",
     title: "ExpertLancing Website",
     leftImg: "/images/proto2.1.0.png",
     rightImg: "/images/proto2.1.1.png",
@@ -81,6 +83,7 @@ const prints = [
   {
     id: 3,
     text: "SMARTER INSIGHTS FOR SAFER CHEMISTRY",
+    subtext: "Redesigning the car buying experience for a leading automotive startup.",
     title: "Chemora",
     leftImg: "/images/proto3.1.0.png",
     rightImg: "/images/thuse.gif",
@@ -116,6 +119,7 @@ const prints = [
   {
     id: 4,
     text: "PROJECT WORKFLOW, SIMPLIFIED",
+    subtext: "Redesigning the car buying experience for a leading automotive startup.",
     title: "ExpertShare",
     leftImg: "/images/proto4.1.0.png",
     rightImg: "/images/thuse.gif",
@@ -151,6 +155,7 @@ const prints = [
   {
     id: 5,
     text: "A NEW PERSPECTIVE ON TEXTILES",
+    subtext: "Redesigning the car buying experience for a leading automotive startup.",
     title: "StanVid",
     leftImg: "/images/proto3.1.0.png",
     rightImg: "/images/thuse.gif",
@@ -220,6 +225,7 @@ type Metric = {
 type PrintItem = {
   id: number;
   text: string;
+  subtext: string;
   title: string;
   leftImg: string;
   rightImg: string;
@@ -246,7 +252,7 @@ function Section({
   return (
     <section
       ref={ref}
-      className="relative w-full h-screen flex items-center justify-center snap-start overflow-hidden"
+      className="relative w-11/12 mx-auto h-screen flex items-center justify-center snap-start overflow-hidden"
     >
 
       {/* Left Image */}
@@ -256,7 +262,7 @@ function Section({
             key={data.leftImg}
             src={data.leftImg}
             alt="print-left"
-            className="absolute left-0 top-1/2 w-[30%] -translate-y-1/2 rounded-xl"
+            className="absolute left-8 top-1/2 w-[30%] -translate-y-1/2 rounded-xl"
             initial={{ x: "-120%", rotate: -30, opacity: 0 }}
             animate={{ x: "0%", rotate: 0, opacity: 1 }}
             exit={{ x: "-120%", rotate: -30, opacity: 0 }}
@@ -282,7 +288,7 @@ function Section({
       </AnimatePresence> */}
 
       {/* Center Text */}
-      <div className="relative z-10 text-center">
+      <div className="relative z-10 text-center w-[28%]">
         <AnimatePresence mode="wait">
           {active && (
             <motion.div
@@ -294,6 +300,7 @@ function Section({
             >
               <p className="text-sm tracking-widest mb-4 font-body">{data.text}</p>
               <h2 className="text-5xl font-bold mb-6 font-sub">{data.title}</h2>
+              <p className="text-sm mb-4 font-body">{data.subtext}</p>
               <button className="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-black transition cursor-pointer">
                 Explore Project
               </button>
@@ -307,7 +314,7 @@ function Section({
           {active && data.metrics && (
             <motion.div
               key="metrics-panel"
-              className="absolute right-8 top-1/2 w-full max-w-xs p-6 -translate-y-1/2 rounded-2xl shadow-2xl backdrop-blur-md bg-white/5 border border-white/10 origin-bottom-right rotate-y-45 lg:block hidden" // Added origin-bottom-right
+              className="absolute right-8 top-1/2 w-[30%] p-6 -translate-y-1/2 rounded-2xl shadow-2xl backdrop-blur-md bg-white/5 border border-white/10 origin-bottom-right rotate-y-45 lg:block hidden" // Added origin-bottom-right
               initial={{ x: "120%", opacity: 0, rotate: 30 }} // Initial rotation to match entrance
               animate={{ x: "0%", opacity: 1, rotate: 0 }}   // Animate to no rotation
               exit={{ x: "120%", opacity: 0, rotate: 30 }}    // Exit rotation
