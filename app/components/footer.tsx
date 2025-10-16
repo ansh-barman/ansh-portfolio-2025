@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <section className='px-8 mt-8'>
+    <section className='px-8 mt-8 relative z-50'>
       <div className='md:w-[90%] md:mx-auto'>
         <h1 className='text-4xl font-heading text-white'>Get in touch</h1>
         <hr className='text-[#2c9ab7] w-20 border-[1px]' />  
