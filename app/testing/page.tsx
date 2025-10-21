@@ -5,8 +5,6 @@ import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { AuroraBackground } from '../components/ui/aurora-background';
 import type { JSX } from "react"; 
-import "./projects.css";
-
 
 const prints = [
   {
