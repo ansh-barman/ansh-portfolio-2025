@@ -16,12 +16,13 @@ type FirestoreProject = {
   metrics: FirestoreMetric[];
 };
 
-interface PageProps {
+// Use the exact signature Next.js expects
+export default async function ProjectPage({
+  params,
+}: {
   params: { id: string };
-}
-
-export default async function ProjectPage(props: PageProps) {
-  const { params } = await props; // ✅ await props
+}) {
+  // ✅ params is already awaited by Next.js
   const docRef = doc(db, "projects", params.id);
   const docSnap = await getDoc(docRef);
 
@@ -53,7 +54,7 @@ export default async function ProjectPage(props: PageProps) {
           <p className="text-base text-gray-700 leading-relaxed">{data.description}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-            {data.metrics?.map((metric: FirestoreMetric, index: number) => (
+            {data.metrics?.map((metric, index) => (
               <div
                 key={index}
                 className={`p-4 rounded-xl bg-${metric.iconColor}-100 border-l-4 border-${metric.iconColor}-500`}
