@@ -186,7 +186,7 @@ const prints = [
   },
 ];
 
-export default function PrintsPage() {
+export default function PrintsTestPage() {
   const [index, setIndex] = useState(0);
 
   // Each section reveals on scroll
