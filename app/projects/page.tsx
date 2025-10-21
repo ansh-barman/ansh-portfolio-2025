@@ -45,27 +45,27 @@ export default function PrintsPage() {
 
   // Fetch projects from Firebase Firestore
   useEffect(() => {
-    const fetchProjects = async () => {
-      const querySnapshot = await getDocs(collection(db, "projects"));
-      const projectsData: PrintItem[] = querySnapshot.docs.map((doc, idx) => {
-        const data = doc.data() as FirestoreProject;
-        return {
-          id: idx + 1,
-          text: data.text || "Project Highlight",
-          subtext: data.description || "",
-          title: data.name || `Project ${idx + 1}`,
-          leftImg: data.leftimg,
-          metrics: (data.metrics || []).map((m: any) => ({
-            label: m.label,
-            value: m.value,
-            icon: getMetricIcon(m.iconColor),
-          })),
-        };
-      });
-      setPrints(projectsData);
-    };
-    fetchProjects();
-  }, []);
+  const fetchProjects = async () => {
+    const querySnapshot = await getDocs(collection(db, "projects"));
+    const projectsData: PrintItem[] = querySnapshot.docs.map((doc, idx) => {
+      const data = doc.data() as FirestoreProject;
+      return {
+        id: idx + 1,
+        text: data.text || "Project Highlight",
+        subtext: data.description || "",
+        title: data.name || `Project ${idx + 1}`,
+        leftImg: data.leftimg,
+        metrics: (data.metrics || []).map((m: FirestoreMetric) => ({
+          label: m.label,
+          value: m.value,
+          icon: getMetricIcon(m.iconColor),
+        })),
+      };
+    });
+    setPrints(projectsData);
+  };
+  fetchProjects();
+}, []);
 
   return (
     <div className="scrollbar-hidden relative w-full h-screen overflow-x-hidden text-white snap-y snap-mandatory">
