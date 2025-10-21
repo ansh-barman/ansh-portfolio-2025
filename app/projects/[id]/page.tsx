@@ -16,14 +16,11 @@ type FirestoreProject = {
   metrics: FirestoreMetric[];
 };
 
-// Use the exact signature Next.js expects
-export default async function ProjectPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  // ✅ No need to await params; Next.js already resolves it
-  const docRef = doc(db, "projects", params.id);
+export default async function ProjectPage(props: { params: Promise<{ id: string }> }) {
+  // Await params before using it
+  const { id } = await props.params;
+
+  const docRef = doc(db, "projects", id);
   const docSnap = await getDoc(docRef);
 
   if (!docSnap.exists()) {
@@ -35,6 +32,12 @@ export default async function ProjectPage({
   }
 
   const data = docSnap.data() as FirestoreProject;
+
+  const colorClasses = {
+    green: { bg: "bg-green-100", border: "border-green-500" },
+    yellow: { bg: "bg-yellow-100", border: "border-yellow-500" },
+    blue: { bg: "bg-blue-100", border: "border-blue-500" },
+  } as const;
 
   return (
     <div className="p-10 space-y-8">
@@ -54,15 +57,18 @@ export default async function ProjectPage({
           <p className="text-base text-gray-700 leading-relaxed">{data.description}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-            {data.metrics?.map((metric, index) => (
-              <div
-                key={index}
-                className={`p-4 rounded-xl bg-${metric.iconColor}-100 border-l-4 border-${metric.iconColor}-500`}
-              >
-                <p className="font-medium text-gray-900">{metric.label}</p>
-                <p className="text-xl font-semibold text-gray-800">{metric.value}</p>
-              </div>
-            ))}
+            {data.metrics?.map((metric, index) => {
+              const cls = colorClasses[metric.iconColor];
+              return (
+                <div
+                  key={index}
+                  className={`p-4 rounded-xl ${cls.bg} border-l-4 ${cls.border}`}
+                >
+                  <p className="font-medium text-gray-900">{metric.label}</p>
+                  <p className="text-xl font-semibold text-gray-800">{metric.value}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
