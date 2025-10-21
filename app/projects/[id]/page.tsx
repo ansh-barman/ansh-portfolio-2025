@@ -16,11 +16,14 @@ type FirestoreProject = {
   metrics: FirestoreMetric[];
 };
 
-export default async function ProjectPage({ params }: { params: { id: string } | Promise<{ id: string }> }) {
-  // Await params if it’s a promise
-  const { id } = params instanceof Promise ? await params : params;
-
-  const docRef = doc(db, "projects", id);
+// Use the exact signature Next.js expects
+export default async function ProjectPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  // ✅ No need to await params; Next.js already resolves it
+  const docRef = doc(db, "projects", params.id);
   const docSnap = await getDoc(docRef);
 
   if (!docSnap.exists()) {
