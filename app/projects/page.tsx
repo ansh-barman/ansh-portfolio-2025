@@ -1,236 +1,334 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { AuroraBackground } from '../components/ui/aurora-background';
+import type { JSX } from "react"; 
 import "./projects.css";
 
 
-const projects = [
+const prints = [
   {
+    id: 1,
+    text: "THE AUTOMOTIVE INITIATIVE",
+    subtext: "Redesigning the car buying experience for a leading automotive startup.",
     title: "TorqHeads",
-    sub_title: "Lorem Ipsum Dolor Grandi",
-    resp_desc: "This portfolio showcases a collection of innovative web development projects, each designed with performance, accessibility, and user experience in mind. From dynamic interfaces to robust backends, every build reflects a thoughtful approach to modern development. Tools used include React, Next.js, Tailwind CSS, and more, ensuring clean, scalable, and responsive solutions.",
-    description: "TorqHeads is a modern platform designed for automotive enthusiasts to explore, connect, and stay updated with the industry. It offers a streamlined experience featuring blogs, news, videos, and a dedicated forum, all within a minimal and intuitive interface. What sets TorqHeads apart is its goal to unify the automotive space. While existing communities and marketplaces serve specific needs well, there isn’t yet a single destination where users can access both rich content and a wide range of automotive products. The upcoming TorqHeads marketplace aims to bridge this gap. Local sellers and small online shops will be able to list everything from car parts to enthusiast merchandise, making it easier for users to find what they need in one place. Built using Next.js, Tailwind CSS, Firebase, Node.js, and Express.js, TorqHeads delivers a fast, seamless experience tailored for the modern automotive community.",
-    tech: ["Next.js", "Tailwind CSS", "Firebase", "Node.js", "Express.js", "Figma", "Illustrator"],
-    liveLink: "#",
-    codeLink: "#",
-    images: [
-      "/images/proto1.1.b.png",
+    leftImg: "/images/proto1.1.0.png",
+    metrics: [{
+        label: "Community Engagement",
+        value: "↑ 78%",
+        icon: (
+          <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        ),
+      },
+      {
+        label: "Content Interaction Rate",
+        value: "↑ 86%",
+        icon: (
+          <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 0012 4.043c-3.51 0-6.685 1.76-8.59 4.433M19 19v-5h-.581m-15.356-2A8.001 8.001 0 0012 19.957c3.51 0 6.685-1.76 8.59-4.433" />
+          </svg>
+        ),
+      },
+      {
+        label: "nterface Satisfaction",
+        value: "↑ 91%",
+        icon: (
+          <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        ),
+      },
     ],
   },
   {
-    title: "Company Website",
-    sub_title: "Lorem Ipsum Dolor Grandi",
-    resp_desc: "This portfolio showcases a collection of innovative web development projects, each designed with performance, accessibility, and user experience in mind. From dynamic interfaces to robust backends, every build reflects a thoughtful approach to modern development. Tools used include React, Next.js, Tailwind CSS, and more, ensuring clean, scalable, and responsive solutions.",
-    description: "The Expertlancing website serves as the company's digital front, designed to inform and engage potential clients by showcasing our services, industry coverage, and domain expertise. It also acts as a central space for sharing insights through articles, blogs, reports, and case studies. I worked as the frontend developer and UI/UX designer on this project, collaborating with one other team member to build the site from the ground up. The development stack includes ReactJS, TailwindCSS, NodeJS, ExpressJS, and MongoDB. On the design side, I used Figma for prototyping and interface design, and Illustrator for creating supporting visuals and graphics. The website is live and in continuous development, with regular improvements to the user interface and experience based on evolving content and strategic goals.",
-    tech: ["React", "TailwindCSS", "Node.js" , "MongoDB", "Figma", "Illustrator"], 
-    liveLink: "#",
-    codeLink: "#",
-    images: [
-      "/images/proto2.1.a.png",
+    id: 2,
+    text: "INSPIRED BY CLASSIC PATTERNS",
+    subtext: "Redesigning the car buying experience for a leading automotive startup.",
+    title: "ExpertLancing Website",
+    leftImg: "/images/proto2.1.0.png",
+    metrics: [{
+        label: "Conversion Lift",
+        value: "↑ 25%",
+        icon: (
+          <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        ),
+      },
+      {
+        label: "User Retention",
+        value: "90%+",
+        icon: (
+          <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 0012 4.043c-3.51 0-6.685 1.76-8.59 4.433M19 19v-5h-.581m-15.356-2A8.001 8.001 0 0012 19.957c3.51 0 6.685-1.76 8.59-4.433" />
+          </svg>
+        ),
+      },
+      {
+        label: "Time on Site",
+        value: "↑ 45 seconds",
+        icon: (
+          <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        ),
+      },
     ],
   },
   {
+    id: 3,
+    text: "SMARTER INSIGHTS FOR SAFER CHEMISTRY",
+    subtext: "Redesigning the car buying experience for a leading automotive startup.",
     title: "Chemora",
-    sub_title: "Lorem Ipsum Dolor Grandi",
-    resp_desc: "This portfolio showcases a collection of innovative web development projects, each designed with performance, accessibility, and user experience in mind. From dynamic interfaces to robust backends, every build reflects a thoughtful approach to modern development. Tools used include React, Next.js, Tailwind CSS, and more, ensuring clean, scalable, and responsive solutions.",
-    description: "Chemora is a chemical intelligence platform that helps industry professionals identify safer alternatives to banned or regulated chemicals. Designed with R&D teams and chemical experts in mind, the platform enables users to search a rich database using advanced, precise queries aligned with global regulatory frameworks. It also provides a powerful comparison interface that visualizes key differences between restricted substances and their potential substitutes. Built using HTML, CSS, JavaScript, Django, and MongoDB, Chemora combines a robust backend with a clear, data-driven frontend experience. While the current version is live and in use, we are actively developing a new iteration to improve both functionality and user experience.",
-    tech: ["HTML", "CSS", "JavaScript", "Django", "MongoDB", "Figma", "Github"],
-    liveLink: "#",
-    codeLink: "#",
-    images: [
-      "/images/proto3.1.a.png",
+    leftImg: "/images/proto3.1.0.png",
+    metrics: [{
+        label: "Conversion Lift",
+        value: "↑ 25%",
+        icon: (
+          <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        ),
+      },
+      {
+        label: "User Retention",
+        value: "90%+",
+        icon: (
+          <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 0012 4.043c-3.51 0-6.685 1.76-8.59 4.433M19 19v-5h-.581m-15.356-2A8.001 8.001 0 0012 19.957c3.51 0 6.685-1.76 8.59-4.433" />
+          </svg>
+        ),
+      },
+      {
+        label: "Time on Site",
+        value: "↑ 45 seconds",
+        icon: (
+          <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        ),
+      },
+    ],
+  },
+  {
+    id: 4,
+    text: "PROJECT WORKFLOW, SIMPLIFIED",
+    subtext: "Redesigning the car buying experience for a leading automotive startup.",
+    title: "ExpertShare",
+    leftImg: "/images/proto4.1.0.png",
+    metrics: [{
+        label: "Conversion Lift",
+        value: "↑ 25%",
+        icon: (
+          <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        ),
+      },
+      {
+        label: "User Retention",
+        value: "90%+",
+        icon: (
+          <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 0012 4.043c-3.51 0-6.685 1.76-8.59 4.433M19 19v-5h-.581m-15.356-2A8.001 8.001 0 0012 19.957c3.51 0 6.685-1.76 8.59-4.433" />
+          </svg>
+        ),
+      },
+      {
+        label: "Time on Site",
+        value: "↑ 45 seconds",
+        icon: (
+          <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        ),
+      },
+    ],
+  },
+  {
+    id: 5,
+    text: "A NEW PERSPECTIVE ON TEXTILES",
+    subtext: "Redesigning the car buying experience for a leading automotive startup.",
+    title: "StanVid",
+    leftImg: "/images/proto3.1.0.png",
+    metrics: [{
+        label: "Conversion Lift",
+        value: "↑ 25%",
+        icon: (
+          <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        ),
+      },
+      {
+        label: "User Retention",
+        value: "90%+",
+        icon: (
+          <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 0012 4.043c-3.51 0-6.685 1.76-8.59 4.433M19 19v-5h-.581m-15.356-2A8.001 8.001 0 0012 19.957c3.51 0 6.685-1.76 8.59-4.433" />
+          </svg>
+        ),
+      },
+      {
+        label: "Time on Site",
+        value: "↑ 45 seconds",
+        icon: (
+          <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        ),
+      },
     ],
   },
 ];
 
+export default function PrintsPage() {
+  const [index, setIndex] = useState(0);
 
-export default function Home() {
+  // Each section reveals on scroll
+  return (
+    <div className="scrollbar-hidden relative w-full h-screen overflow-x-hidden text-white snap-y snap-mandatory">
 
-  const [modalImage, setModalImage] = useState<string | null>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
+        <div className='fixed h-screen w-full overflow-hidden z-0'>
+          <div className='absolute top-0 w-full h-full bg-linear-to-b from-[#ffffff00] via-[#ffffff00] to-black'></div>
+          <AuroraBackground>
+            <></>
+           </AuroraBackground>
+        </div>
 
-  const [activeIndex, setActiveIndex] = useState(0);
+      {prints.map((p, i) => (
+        <Section
+          key={p.id}
+          data={p}
+          active={index === i}
+          onInView={() => setIndex(i)}
+        />
+      ))}
+    </div>
+  );
+}
 
-  // Trap ESC for modal
-  const escHandler = useCallback((e: KeyboardEvent) => {
-    if (e.key === "Escape") setModalImage(null);
+type Metric = {
+  label: string;
+  value: string;
+  icon: JSX.Element;
+};
 
-    // Arrow key navigation
-    if (e.key === "ArrowDown" && activeIndex < projects.length - 1) {
-      const nextSection = document.getElementById(`project-${activeIndex + 1}`);
-      nextSection?.scrollIntoView({ behavior: "smooth" });
-    }
+type PrintItem = {
+  id: number;
+  text: string;
+  subtext: string;
+  title: string;
+  leftImg: string;
+  metrics: Metric[];
+};
 
-    if (e.key === "ArrowUp" && activeIndex > 0) {
-      const prevSection = document.getElementById(`project-${activeIndex - 1}`);
-      prevSection?.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [activeIndex]);
-
-  // Track scroll position for active dot & keys
-  useEffect(() => {
-    window.addEventListener("keydown", escHandler);
-
-    const onScroll = () => {
-      const scrollPos = window.scrollY + window.innerHeight / 2;
-      const newIndex = projects.findIndex((_, index) => {
-        const el = document.getElementById(`project-${index}`);
-        return el && el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos;
-      });
-      if (newIndex !== -1) setActiveIndex(newIndex);
-    };
-
-    window.addEventListener("scroll", onScroll);
-    return () => {
-      window.removeEventListener("keydown", escHandler);
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, [escHandler]);
-
-  useEffect(() => {
-    const sectionElements = document.querySelectorAll("section[id^='project-']");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.id.split("-")[1]);
-            setActiveIndex(index);
-          }
-        });
-      },
-      {
-        threshold: 0.5,
-      }
-    );
-
-    sectionElements.forEach((el) => observer.observe(el));
-
-    return () => {
-      sectionElements.forEach((el) => observer.unobserve(el));
-    };
-  }, []);
-
-  const openModal = (imgSrc: string) => {
-    setModalImage(imgSrc);
-    setTimeout(() => {
-      modalRef.current?.focus();
-    }, 100);
-  };
+function Section({
+  data,
+  active,
+  onInView,
+}: {
+  data: PrintItem;
+  active: boolean;
+  onInView: () => void;
+}) {
+  const { ref } = useInView({
+    threshold: 0.5,
+    triggerOnce: false,
+    onChange: (inView) => {
+      if (inView) onInView();
+    },
+  });
 
   return (
-    <div className="relative">
-      <div className="absolute z-49">
-        {/* Project scroll container */}
-        <div className="h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth z-0">
-          {projects.map((project, index) => (
-            <motion.section
-              key={index}
-              id={`project-${index}`} 
-              className="h-screen snap-start flex flex-col justify-center items-start text-left px-6 text-white md:w-[85%] mx-auto"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="md:text-7xl text-4xl font-heading">{project.title}</h2>
-              <p className="md:text-sm md:mt-6 md:ml-4 text-xs mt-2 ml-1">{project.sub_title}</p>
-            <div className="md:flex items-start justify-start gap-4 w-full mt-6">
-              {/* Image grid viewer (scaled down collage-style) */}
-              <div className="aspect-[4/3] w-full md:w-[50%] mb-6 md:px-4 overflow-hidden rounded-xl relative">
-                <div
-                  className="relative w-full h-full cursor-zoom-in"
-                  onClick={() => openModal(project.images[0])}
-                >
-                  <Image
-                    src={project.images[0]}
-                    alt={`${project.title} Preview`}
-                    fill
-                    className="object-cover object-top"
-                  />
-                </div>
-              </div>
+    <section
+      ref={ref}
+      className="relative w-11/12 mx-auto h-screen flex items-center justify-center snap-start overflow-hidden"
+    >
 
-              <div className="md:w-[50%]">
-                <div className="flex gap-2 mb-5 flex-wrap justify-start">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-md hidden md:block mb-5">{project.description}</p>
-                <p className="text-md md:hidden line-clamp-2 mb-5">{project.resp_desc}</p>
-                {/* Link */}
-                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-start gap-1 text-white text-sm rounded hover:text-blue-700 underline">
-                  Live Demo
-                  <i className="fa-solid fa-arrow-right-long text-[10px] mt-[5px]"></i>
-                </a>
-              </div>
-            </div>
-                
+      {/* Left Image */}
+      <AnimatePresence mode="wait">
+        {active && (
+          <motion.img
+            key={data.leftImg}
+            src={data.leftImg}
+            alt="print-left"
+            className="absolute left-8 top-1/2 w-[30%] -translate-y-1/2 rounded-xl"
+            initial={{ x: "-120%", rotate: -30, opacity: 0 }}
+            animate={{ x: "0%", rotate: 0, opacity: 1 }}
+            exit={{ x: "-120%", rotate: -30, opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          />
+        )}
+      </AnimatePresence>
 
-                
-            </motion.section>
-          ))}
-        </div>
-
-        {/* Navigation dots */}
-        <div className="z-50 flex gap-4 md:flex-col fixed bottom-4 left-1/2 -translate-x-1/2 md:bottom-auto md:left-auto md:right-6 md:top-1/2 md:-translate-y-1/2">
-          {projects.map((_, index) => (
-            <a
-              key={index}
-              href={`#project-${index}`}
-              className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                activeIndex === index ? "bg-blue-600 scale-125" : "bg-gray-400"
-              }`}
-            ></a>
-          ))}
-        </div>
-
-        {/* Lightbox Modal */}
-        <AnimatePresence>
-          {modalImage && (
+      {/* Center Text */}
+      <div className="relative z-10 text-center w-[28%]">
+        <AnimatePresence mode="wait">
+          {active && (
             <motion.div
-              className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/80 backdrop-blur-sm"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setModalImage(null)} // Close on background click
+              key={data.id}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ duration: 0.6 }}
             >
-              <motion.div
-                ref={modalRef}
-                tabIndex={-1}
-                className="relative w-[90vw] h-[55vh] max-w-5xl outline-none"
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.95, opacity: 0 }}
-                onClick={(e) => e.stopPropagation()} // Prevent closing when image is clicked
-                onKeyDown={(e) => {
-                  if (e.key === "Tab") {
-                    e.preventDefault(); // Optional: trap focus
-                  }
-                }}
-              >
-                <Image
-                  src={modalImage}
-                  alt="Zoomed Project"
-                  fill
-                  className="object-contain rounded-xl shadow-xl"
-                />
-              </motion.div>
+              <p className="text-sm tracking-widest mb-4 font-body">{data.text}</p>
+              <h2 className="text-5xl font-bold mb-6 font-sub">{data.title}</h2>
+              <p className="text-sm mb-4 font-body">{data.subtext}</p>
+              <button className="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-black transition cursor-pointer">
+                Explore Project
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
-      <AuroraBackground>
-       <></>
-      </AuroraBackground>
-    </div>
+
+      {/* RIGHT ELEMENT */}
+        <AnimatePresence mode="wait">
+          {active && data.metrics && (
+            <motion.div
+              key="metrics-panel"
+              className="absolute right-8 top-1/2 w-[30%] p-6 -translate-y-1/2 rounded-2xl shadow-2xl backdrop-blur-md bg-white/5 border border-white/10 origin-bottom-right rotate-y-45 lg:block hidden" // Added origin-bottom-right
+              initial={{ x: "120%", opacity: 0, rotate: 30 }} // Initial rotation to match entrance
+              animate={{ x: "0%", opacity: 1, rotate: 0 }}   // Animate to no rotation
+              exit={{ x: "120%", opacity: 0, rotate: 30 }}    // Exit rotation
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+            >
+              <h3 className="text-xl font-bold mb-6 tracking-wide text-gray-100 uppercase border-b border-white/10 pb-3">
+                Project Impact
+              </h3>
+
+              <div className="space-y-6">
+                {data.metrics.map((metric, index) => (
+                  <div key={index} className="flex items-center space-x-4">
+                    <div className="p-2 rounded-full bg-gray-800/50">
+                      {metric.icon}
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase text-gray-400 tracking-wider">
+                        {metric.label}
+                      </p>
+                      <p className="text-2xl font-extrabold text-white">
+                        {metric.value}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      
+      {/* Mobile-only metrics/info */}
+      <div className="lg:hidden absolute bottom-10 px-4 text-center w-full">
+         <p className="text-sm text-gray-400">View project details to see key impact metrics.</p>
+      </div>
+
+    </section>
   );
 }
