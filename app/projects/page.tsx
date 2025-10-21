@@ -10,6 +10,20 @@ import { db } from "../../lib/firebase";
 import Link from "next/link";
 import "./projects.css";
 
+type FirestoreMetric = {
+  label: string;
+  value: string;
+  iconColor: "green" | "yellow" | "blue";
+};
+
+type FirestoreProject = {
+  name: string;
+  description: string;
+  leftimg: string;
+  text: string;
+  metrics: FirestoreMetric[];
+};
+
 type Metric = {
   label: string;
   value: string;
@@ -34,7 +48,7 @@ export default function PrintsPage() {
     const fetchProjects = async () => {
       const querySnapshot = await getDocs(collection(db, "projects"));
       const projectsData: PrintItem[] = querySnapshot.docs.map((doc, idx) => {
-        const data = doc.data();
+        const data = doc.data() as FirestoreProject;
         return {
           id: idx + 1,
           text: data.text || "Project Highlight",
