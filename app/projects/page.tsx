@@ -143,26 +143,11 @@ function Section({
   return (
     <section
       ref={ref}
-      className="relative w-11/12 mx-auto h-screen flex items-center justify-center snap-start overflow-hidden"
+      className="relative w-11/12 mx-auto h-screen flex flex-col items-center justify-center gap-10 snap-start overflow-hidden"
     >
-      {/* Left Image */}
-      <AnimatePresence mode="wait">
-        {active && (
-          <motion.img
-            key={data.leftImg}
-            src={data.leftImg}
-            alt="print-left"
-            className="absolute left-8 top-1/2 w-[30%] -translate-y-1/2 rounded-xl"
-            initial={{ x: "-120%", rotate: -30, opacity: 0 }}
-            animate={{ x: "0%", rotate: 0, opacity: 1 }}
-            exit={{ x: "-120%", rotate: -30, opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-          />
-        )}
-      </AnimatePresence>
 
       {/* Center Text */}
-      <div className="relative z-10 text-center w-[28%]">
+      <div className="relative z-10 text-center w-full md:w-[30%]">
         <AnimatePresence mode="wait">
           {active && (
             <motion.div
@@ -173,7 +158,7 @@ function Section({
               transition={{ duration: 0.6 }}
             >
               <p className="text-sm tracking-widest mb-4 font-body">{data.text}</p>
-              <h2 className="text-5xl font-bold mb-6 font-sub">{data.title}</h2>
+              <h2 className="text-5xl lg:text-7xl font-heading mb-6">{data.title}</h2>
               <p className="text-sm mb-4 font-body">{data.subtext}</p>
               <Link href={`/projects/${data.title.toLowerCase().replace(/\s+/g, "")}`} className="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-black transition cursor-pointer">
                 Explore Project
@@ -183,12 +168,28 @@ function Section({
         </AnimatePresence>
       </div>
 
+      {/* Left Image */}
+      <AnimatePresence mode="wait">
+        {active && (
+          <motion.img
+            key={data.leftImg}
+            src={data.leftImg}
+            alt="print-left"
+            className=" md:absolute left-2 lg:left-0 top-1/2 w-2/3 md:w-[30%] md:-translate-y-1/2 rounded-xl"
+            initial={{ x: "-120%", rotate: -30, opacity: 0 }}
+            animate={{ x: "0%", rotate: 0, opacity: 1 }}
+            exit={{ x: "-120%", rotate: -30, opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Right Metrics */}
       <AnimatePresence mode="wait">
         {active && data.metrics && (
           <motion.div
             key="metrics-panel"
-            className="absolute right-8 top-1/2 w-[30%] p-6 -translate-y-1/2 rounded-2xl shadow-2xl backdrop-blur-md bg-white/5 border border-white/10 origin-bottom-right rotate-y-45 lg:block hidden"
+            className="absolute right-2 lg:right-0 top-1/2 w-[30%] p-6 -translate-y-1/2 rounded-2xl shadow-2xl backdrop-blur-md bg-white/5 border border-white/10 origin-bottom-right rotate-y-45 lg:block hidden"
             initial={{ x: "120%", opacity: 0, rotate: 30 }}
             animate={{ x: "0%", opacity: 1, rotate: 0 }}
             exit={{ x: "120%", opacity: 0, rotate: 30 }}
