@@ -186,35 +186,80 @@ function Section({
 
       {/* Right Metrics */}
       <AnimatePresence mode="wait">
-        {active && data.metrics && (
-          <motion.div
-            key="metrics-panel"
-            className="absolute right-2 lg:right-0 top-1/2 w-[30%] p-6 -translate-y-1/2 rounded-2xl shadow-2xl backdrop-blur-md bg-white/5 border border-white/10 origin-bottom-right rotate-y-45 lg:block hidden"
-            initial={{ x: "120%", opacity: 0, rotate: 30 }}
-            animate={{ x: "0%", opacity: 1, rotate: 0 }}
-            exit={{ x: "120%", opacity: 0, rotate: 30 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-          >
-            <h3 className="text-xl font-bold mb-6 tracking-wide text-gray-100 uppercase border-b border-white/10 pb-3">
-              Project Impact
-            </h3>
+      {active && data?.metrics && (
+        <motion.div
+          key="metrics-panel"
+          whileHover={{ y: -8, scale: 1.02 }}
+          initial={{ x: "120%", opacity: 0, rotate: 18 }}
+          animate={{ x: "0%", opacity: 1, rotate: 0 }}
+          exit={{ x: "120%", opacity: 0, rotate: 18 }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+          className="absolute right-2 lg:right-0 top-1/2 w-[30%] -translate-y-1/2 rounded-2xl overflow-hidden hidden lg:block"
+        >
+          {/* Accent gradient strip */}
+          {/* <div className="h-[3px] w-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500" /> */}
 
-            <div className="space-y-6">
-              {data.metrics.map((metric, index) => (
-                <div key={index} className="flex items-center space-x-4">
-                  <div className="p-2 rounded-full bg-gray-800/50">{metric.icon}</div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase text-gray-400 tracking-wider">
+          {/* Glass shell */}
+          <div className="relative p-6 backdrop-blur-xl bg-black/10 border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.45)] rounded-b-2xl">
+            {/* Inner highlight */}
+            <div className="pointer-events-none absolute inset-0 rounded-b-2xl bg-gradient-to-b from-white/20 to-transparent opacity-30" />
+
+            {/* Header */}
+            <div className="mb-5">
+              <h3 className="text-xs tracking-[0.25em] uppercase text-white/60">
+                Project Impact
+              </h3>
+              <div className="h-px bg-white/15 mt-3" />
+            </div>
+
+            {/* Hero metric (first item highlighted) */}
+            {data.metrics[0] && (
+              <div className="mb-6">
+                <div className="flex items-end gap-3">
+                  <span className="text-5xl font-semibold text-white tabular-nums">
+                    {data.metrics[0].value}
+                  </span>
+                  <span className="text-sm text-white/70 mb-2 uppercase tracking-wide">
+                    {data.metrics[0].label}
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* Remaining metrics as premium rows */}
+            <div className="space-y-4">
+              {data.metrics.slice(1).map((metric, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index }}
+                  className="flex items-center justify-between rounded-xl border border-white/15 bg-white/5 px-4 py-3 hover:bg-white/10 transition"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-full bg-black/30 border border-white/10">
+                      {metric.icon}
+                    </div>
+                    <p className="text-sm text-white/70 uppercase tracking-wide">
                       {metric.label}
                     </p>
-                    <p className="text-2xl font-extrabold text-white">{metric.value}</p>
                   </div>
-                </div>
+
+                  <span className="rounded-full px-3 py-1 text-sm font-medium tabular-nums bg-gradient-to-r from-cyan-400/20 to-blue-500/20 border border-white/20 text-white shadow-inner">
+                    {metric.value}
+                  </span>
+                </motion.div>
               ))}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+            {/* Context line */}
+            <div className="mt-6 text-xs text-white/50 tracking-wide">
+              Measured after UX + IA redesign — 8 week release cycle
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
 
       {/* Mobile-only metrics/info */}
       <div className="lg:hidden absolute bottom-10 px-4 text-center w-full">
