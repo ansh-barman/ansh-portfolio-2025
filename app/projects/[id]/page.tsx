@@ -158,7 +158,7 @@ export default function ProjectPage({ params }: { params: Promise<{ id: string }
             className="w-full h-[560px] rounded-xl bg-white"
             src={
               data.figmaUrl ||
-              "https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/mzbNHRU7ufW0M6VlmiBFIj/Interactive-Slider-Component--Community-?node-id=0-1"
+              "https://embed.figma.com/design/d9S5rRIq63phHPYOe5hOak/FigBoard-1?node-id=0-1&embed-host=share"
             }
             allowFullScreen
           />
