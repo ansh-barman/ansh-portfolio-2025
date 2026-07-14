@@ -1,14 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=GFS+Didot&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @import 'swiper/css';
 @import 'swiper/css/pagination';
 
+@font-face {
+  font-family: 'SF Pro';
+  src: url('/fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --font-heading: "'GFS Didot'", serif;
-  --font-sub: "Montserrat", sans-serif;
-  --font-body: "Inter", sans-serif;
+  --font-heading: 'GFS Didot', serif;
+  --font-sub: 'Montserrat', sans-serif;
+  --font-body: 'SF Pro', sans-serif;
 }
 
 @theme inline {

@@ -19,7 +19,7 @@ export default function Navbar() {
     >
       {/* Liquid Glass Background Layers */}
       <div
-        className="absolute inset-0 backdrop-blur-[2px]"
+        className="absolute inset-0 backdrop-blur-[2px] rounded-full"
         style={{ filter: 'url(#glass-distortion)' }}
       />
       <div className="absolute inset-0 bg-white/20 rounded-full"  />

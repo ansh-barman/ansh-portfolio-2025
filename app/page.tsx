@@ -2,37 +2,49 @@ import Image from 'next/image';
 import Link from 'next/link';
 // import TechOrbit from './components/techorbit';
 import { AuroraBackground } from './components/ui/aurora-background';
+import { LinkedIn, GitHub, Description } from '@mui/icons-material';
+import { SiBehance, SiDribbble } from 'react-icons/si';
 import "./globals.css";
 
 
 export default function Home() {
   return (
-    <main className='bg-black'>
+    <main className='relative bg-black'>
       {/* banner section */}
       <section className="relative md:mb-20">
-        <div className='w-[85%] mx-auto absolute top-10 left-8 flex flex-col items-start justify-center z-49 md:w-[70%] md:left-[6%] md:top-[8%]'>
-          <h1 className='text-7xl font-heading text-white pt-20 md:text-[100px]'>Ansh <br />Barman</h1>
-          <p className='text-xl font-heading text-gray-300 opacity-70 text-center mt-4 md:text-3xl'>Frontend Designer and Developer</p>
-          <div className='my-4 flex items-center justify-center'>
-            <Link target='_blank' href="https://dribbble.com/AnshBarman"><i className="hover:text-[#2c9ab7] fa-brands fa-dribbble text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
-            <Link target='_blank' href="https://www.behance.net/anshbarman"><i className="hover:text-[#2c9ab7] fa-brands fa-behance text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
-            <Link target='_blank' href="https://github.com/ansh-barman"><i className="hover:text-[#2c9ab7] fa-brands fa-github text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
-            <Link target='_blank' href="https://www.linkedin.com/in/ansh-barman-6159201ba/"><i className="hover:text-[#2c9ab7] fa-brands fa-linkedin text-white w-8 h-8 md:w-10 md:h-10"></i></Link>
+        <div className='absolute top-10 left-0 w-full h-[80%] z-49 flex flex-col items-start justify-between'>
+          <div className='w-[85%] mx-auto flex flex-col items-start justify-center md:w-[90%]'>
+            <h1 className='text-7xl font-heading text-white pt-20 md:text-[100px]'>Ansh <br />Barman</h1>
+            <p className='text-xl font-sub text-gray-300 opacity-70 text-center mt-4 font-light md:text-2xl'>UI/UX Designer and Developer</p>
+            <div className='my-4 flex items-center justify-center gap-6 md:gap-8'>
+              <Link target='_blank' className="text-white hover:text-[#2c9ab7] transition-colors duration-300 cursor-pointer" href="https://dribbble.com/AnshBarman/" aria-label="Dribbble">
+                <SiDribbble className="!w-5 !h-5 md:!w-6 md:!h-6" />
+              </Link>
+              <Link target='_blank' className="text-white hover:text-[#2c9ab7] transition-colors duration-300 cursor-pointer" href="https://www.behance.net/anshbarman" aria-label="Behance">
+                <SiBehance className="!w-5 !h-5 md:!w-6 md:!h-6" />
+              </Link>
+              <Link target='_blank' className="text-white hover:text-[#2c9ab7] transition-colors duration-300 cursor-pointer" href="https://github.com/ansh-barman" aria-label="GitHub">
+                <GitHub className="!w-5 !h-5 md:!w-6 md:!h-6" />
+              </Link>
+              <Link target='_blank' className="text-white hover:text-[#2c9ab7] transition-colors duration-300 cursor-pointer" href="https://www.linkedin.com/in/ansh-barman-6159201ba/" aria-label="LinkedIn">
+                <LinkedIn className="!w-5 !h-5 md:!w-6 md:!h-6" />
+              </Link>
+            </div>
+            <p className='text-white font-normal text-sm font-body md:text-lg'>I am a frontend developer and UI/UX designer crafting fast, clean, and responsive interfaces. From concept to deployment, I blend design thinking with modern tools like React, Next.js, Tailwind, and Figma to create seamless user experiences across web platforms — always focused on clarity, performance, and visual precision.</p>
+            <p className='text-white text-sm hover:underline my-4'>Scroll down to know more<i className='fa-solid fa-arrow-right-long rotate-90 text-xs ml-2'></i></p>
           </div>
-          <p className='text-white font-light text-sm font-body md:text-xl'>I am a frontend developer and UI/UX designer crafting fast, clean, and responsive interfaces. From concept to deployment, I blend design thinking with modern tools like React, Next.js, Tailwind, and Figma to create seamless user experiences across web platforms — always focused on clarity, performance, and visual precision.</p>
-          <p className='text-white text-sm hover:underline my-4'>Scroll down to know more<i className='fa-solid fa-arrow-right-long rotate-90 text-xs ml-2'></i></p>
-        </div>
-        {/* brands */}
-        <div className=' md:w-[85%] absolute md:bottom-16 md:left-[7%] md:mx-auto items-center md:justify-center md:gap-10 z-49 flex bottom-32 left-0 w-full justify-around'>
-          <Image className='w-[100px] h-full z-40 md:w-[150px]' width={0} height={0} sizes="(min-width: 768px) 150px, 50px" src="/expLogo/th.png" alt="bg" />
-          <Image className='w-[100px] h-full z-40 md:w-[150px]' width={0} height={0} sizes="(min-width: 768px) 150px, 50px" src="/expLogo/gdsc.png" alt="bg" />
-          <Image className='w-[100px] h-full z-40 md:w-[150px]' width={0} height={0} sizes="(min-width: 768px) 150px, 50px" src="/expLogo/expert.png" alt="bg" />
+          {/* brands */}
+          <div className=' md:w-[85%] md:mx-auto items-center md:justify-center md:gap-10 flex w-[90%] mx-auto justify-around'>
+            <Image className='w-[28%] md:w-[10%]' width={150} height={150} sizes="(min-width: 768px) 150px, 50px" src="/expLogo/expert.png" alt="bg" />
+            <Image className='w-[28%] md:w-[10%]' width={150} height={150} sizes="(min-width: 768px) 150px, 50px" src="/expLogo/th.png" alt="bg" />
+            <Image className='w-[28%] md:w-[10%]' width={150} height={150} sizes="(min-width: 768px) 150px, 50px" src="/expLogo/gdsc.png" alt="bg" />
+          </div>
         </div>
         <div className='relative h-screen w-full overflow-hidden'>
           <div className='absolute top-0 w-full h-full bg-linear-to-b from-[#ffffff00] via-[#ffffff00] to-black z-46'></div>
           <AuroraBackground>
             <></>
-           </AuroraBackground>
+          </AuroraBackground>
           {/* <div className='absolute bottom-0 w-full h-6 bg-linear-to-b from-[#ffffff00] to-black z-48'></div> */}
           {/* <TechOrbit /> */}
           {/* <Image className='absolute bottom-0 w-full z-47 opacity-35 md:hidden' width={200} height={200} src="/bg_grid.png" alt="bg" /> */}
@@ -83,7 +95,7 @@ export default function Home() {
       {/* skills section */}
       <section className='mb-20' id='skills'>
         <h1 className='text-2xl font-heading text-white text-center mx-auto w-9/12 md:text-3xl'>Skills</h1>
-        <p className='text-center mx-auto w-9/12 text-xs mt-4 md:text-[16px] md:font-light'>My all encompassing approach and checklist that builds impactful brand outcomes.</p>
+        <p className='text-center mx-auto w-9/12 text-xs mt-4 md:text-[16px] md:font-light'>Technical skills and creative range that bring brand ideas to life.</p>
         {/* skill pills */}
         <div className='w-[90%] mx-auto mt-10 md:w-[85%]'>
           <h2 className='font-heading mb-5 md:text-lg'>Development</h2>
@@ -155,12 +167,27 @@ export default function Home() {
       {/* projects section */}
       <section className='mb-20'>
         <h1 className='text-2xl font-heading text-white text-center mx-auto w-9/12 md:text-3xl'>Projects</h1>
-        <p className='text-center mx-auto w-9/12 text-xs mt-4 md:text-[16px] md:font-light'>My all encompassing approach and checklist that builds impactful brand outcomes.</p>
+        <p className='text-center mx-auto w-9/12 text-xs mt-4 md:text-[16px] md:font-light'>Case studies where strategy turned into real brand impact.</p>
         {/* project cards */}
         <div className='w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10'>
-          <div className='bg-[#0b0b0b] p-6'>
+
+          <Link href="/projects/chemora" className='bg-[#0b0b0b] hover:bg-[#111111] hover:scale-101 transition-all ease-in-out duration-300 p-6'>
+            <h2 className='font-heading text-2xl'>Chemora</h2>
+            <div className='flex items-center justify-start gap-2 my-4 flex-wrap'>
+              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>Figma</div>
+              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>HTML</div>
+              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>CSS</div>
+              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>JavaScript</div>
+              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>Django</div>
+              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>+ See All</div>
+            </div>
+            <p className='text-sm'>
+              Chemora is a chemical research platform designed to help organizations search, compare, and benchmark harmful, banned, or regulated chemicals or compounds across multiple global regulatory bodies, including the EPA and ECHA. Built with HTML, CSS, JavaScript, Python (Django), MongoDB, and Figma, it delivers a unified interface for cross-jurisdictional research. I engineered comparison tools, benchmark scoring, and real-time regulatory update tracking, empowering clients to navigate fragmented compliance data and make informed, regulation-aligned decisions.
+            </p>
+          </Link>
+          <Link href="/projects/torqheads" className='bg-[#0b0b0b] hover:bg-[#111111] hover:scale-101 transition-all ease-in-out duration-300 p-6'>
             <h2 className='font-heading text-2xl'>TorqHeads</h2>
-            <div className='flex items-center justify-start gap-2 mt-2 mb-4 flex-wrap'>
+            <div className='flex items-center justify-start gap-2 my-4 flex-wrap'>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>HTML</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>CSS</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>TailwindCSS</div>
@@ -171,10 +198,10 @@ export default function Home() {
             <p className='text-sm'>
               TorqHeads is a full-stack platform built to bring automotive enthusiasts together through forums, blogs, and a marketplace in one seamless hub. Designed with React, Firebase, Bootstrap, and Figma, it emphasizes clean navigation, scalability, and real-time community engagement. I conducted feature testing with users and integrated analytics dashboards to optimize retention, turning an idea into a functional, data-driven product.
             </p>
-          </div>
-          <div className='bg-[#0b0b0b] p-6'>
+          </Link>
+          <Link href="/projects/expertlancing" className='bg-[#0b0b0b] hover:bg-[#111111] hover:scale-101 transition-all ease-in-out duration-300 p-6'>
             <h2 className='font-heading text-2xl'>ExpertLancing Website</h2>
-            <div className='flex items-center justify-start gap-2 mt-2 mb-4 flex-wrap'>
+            <div className='flex items-center justify-start gap-2 my-4 flex-wrap'>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>ReactJS</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>HTML</div>
               <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>CSS</div>
@@ -185,24 +212,25 @@ export default function Home() {
             <p className='text-sm'>
               ExpertLancing Website is a corporate platform built to showcase the firm’s expertise with a modern, responsive design and SEO-optimized architecture. Developed end-to-end using ReactJS, Tailwind, and Figma, it emphasizes scalability, accessibility, and consistent branding. By implementing a reusable design system, I reduced new page development time by 35% and boosted client inquiries by 25%, directly driving business growth.
             </p>
-          </div>
-          <div className='bg-[#0b0b0b] p-6'>
-            <h2 className='font-heading text-2xl'>Chemora</h2>
-            <div className='flex items-center justify-start gap-2 mt-2 mb-4 flex-wrap'>
-              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>ReactJS</div>
-              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>HTML</div>
-              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>CSS</div>
-              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>TailwindCSS</div>
-              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>Figma</div>
-              <div className='bg-linear-to-r from-[#0D1B2A] to-[#1B263B] text-white py-2 px-4 text-xs rounded-3xl'>+ See All</div>
-            </div>
-            <p className='text-sm'>
-              Chemora is an R&D platform designed to help organizations navigate the challenge of identifying safer alternatives to harmful or banned chemicals under global regulations. Built with HTML, CSS, JavaScript, Python (Django), MongoDB, and Figma, it delivers an intuitive interface for research and comparison. I engineered compliance metrics, benchmark scores, and interactive graphs, empowering clients to evaluate trade-offs with clarity and make informed, regulation-aligned decisions.
-            </p>
-          </div>
+          </Link>
+
           <Link href="/projects" className='text-sm inline-flex items-center gap-2'>View All <i className='fa-solid fa-arrow-right-long text-xs'></i></Link>
         </div>
       </section>
+      <div className='fixed bottom-8 right-8 z-50'>
+        {/* Liquid Glass Background Layers */}
+        <div
+          className="absolute inset-0 backdrop-blur-[2px] rounded-full"
+          style={{ filter: 'url(#glass-distortion)' }}
+        />
+        <div className="absolute inset-0 bg-white/20 rounded-full" />
+        <div className="absolute inset-0 shadow-[inset_2px_2px_1px_rgba(255,255,255,0.5),inset_-1px_-1px_1px_rgba(255,255,255,0.5)] rounded-full" />
+
+        {/* Foreground Content */}
+        <div className="relative z-10 flex items-center justify-between w-full">
+          <Link target='_blank' href="/Ansh_CV26.pdf" download="AnshBarman-Resume.pdf" className='py-2 px-4 cursor-pointer text-xs flex items-center gap-2 md:text-sm'><Description className='!w-4 !h-4 md:!w-5 md:!h-5' /> Download Resume</Link>
+        </div>
+      </div>
     </main>
   );
 }
